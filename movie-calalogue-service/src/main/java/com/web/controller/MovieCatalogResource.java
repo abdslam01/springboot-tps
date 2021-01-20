@@ -21,11 +21,11 @@ public class MovieCatalogResource {
 
     @GetMapping(value="/{userId}")
     public List<ItemCatalog> getCatalog(@PathVariable String userId) {
-        UserRating ratings=restTemplate.getForObject("http://localhost:8081/ratingdata/users/"+userId, UserRating.class);
+        UserRating ratings=restTemplate.getForObject("http://rating-data-service/ratingdata/users/"+userId, UserRating.class);
 
         return ratings.getUserRating().stream().map(
                 rating -> {
-                    Movie movie=restTemplate.getForObject("http://localhost:8080/movieinfo/"+rating.getMovieId(), Movie.class);
+                    Movie movie=restTemplate.getForObject("http://movie-info-service/movieinfo/"+rating.getMovieId(), Movie.class);
                     return new ItemCatalog(movie.getName(), "movie mission impossible 2020", rating.getRating());
                 }).collect(Collectors.toList());
         /*return Arrays.asList(
