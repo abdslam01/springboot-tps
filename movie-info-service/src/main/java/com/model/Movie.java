@@ -1,11 +1,14 @@
 package com.model;
 
 public class Movie {
-    private String movieId, name;
+    private String movieId, title, overview;
 
-    public Movie(String movieId, String name) {
+    public Movie() {}
+
+    public Movie(String movieId, String title, String overview) {
         this.movieId = movieId;
-        this.name = name;
+        this.title = title;
+        this.overview = overview;
     }
 
     public String getMovieId() {
@@ -16,19 +19,28 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
     @Override
     public String toString() {
         return "Movie{" +
                 "movieId='" + movieId + '\'' +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", overview='" + overview + '\'' +
                 '}';
     }
 }
